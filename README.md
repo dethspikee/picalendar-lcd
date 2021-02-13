@@ -1,7 +1,7 @@
 ## TODO
 
 ```
-lcd i2c code written by Raspberry Pi Guy:
+lcd i2c (found in 'drivers') code written by Raspberry Pi Guy:
 https://github.com/the-raspberry-pi-guy/lcd
 ```
 
