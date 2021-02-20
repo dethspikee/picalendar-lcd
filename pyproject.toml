@@ -10,6 +10,8 @@ click = "^7.1.2"
 google-api-python-client = "^1.12.8"
 google-auth-httplib2 = "^0.0.4"
 google-auth-oauthlib = "^0.4.2"
+smbus = "^1.1.post2"
+"RPi.GPIO" = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 
