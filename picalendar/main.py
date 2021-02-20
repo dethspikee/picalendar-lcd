@@ -2,8 +2,6 @@ from time import sleep
 
 import click
 
-from picalendar import drivers
-from picalendar.quickstart import main as get_events
 from picalendar.api import show_events
 
 
