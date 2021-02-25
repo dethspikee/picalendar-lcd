@@ -7,7 +7,9 @@ from picalendar.api.fetch_events import main as get_events
 
 
 @click.command('show')
-def show():
+@click.option('-n', '--number', type=int, default=10,
+        show_default=True, help='Number of events')
+def show(number: int):
     """
     Retrieve and display upcoming events on a LCD
     """
