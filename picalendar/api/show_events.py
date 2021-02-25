@@ -3,7 +3,7 @@ from time import sleep
 import click
 
 from picalendar import drivers
-from picalendar.api.fetch_events import main as get_events
+from picalendar.api.fetch_events import get_events
 
 
 @click.command('show')
@@ -14,7 +14,7 @@ def show(number: int):
     Retrieve and display upcoming events on a LCD
     """
     display = drivers.Lcd()
-    events = get_events()
+    events = get_events(number)
     try:
         if len(events) == 0:
             while True:

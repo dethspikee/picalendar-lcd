@@ -10,9 +10,10 @@ from google.auth.transport.requests import Request
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
 
-def main():
-    """Shows basic usage of the Google Calendar API.
-    Prints the start and name of the next 10 events on the user's calendar.
+def get_events(number: int) -> list:
+    """
+    Retrieve 'number' of events from Google Calendar API
+    and return list of events
     """
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
@@ -40,16 +41,13 @@ def main():
 
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    print('Getting the upcoming 10 events')
+    print(f'Getting the upcoming {number} events')
     events_result = service.events().list(calendarId='primary', timeMin=now,
                                         maxResults=10, singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
 
     upcoming = []
-
-    if not events:
-        print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         upcoming.append({
@@ -57,7 +55,7 @@ def main():
                 "summary": event["summary"]
             })
 
-    return upcoming 
+    if len(upcoming) == 0:
+        print('No upcoming events...')
 
-if __name__ == '__main__':
-    main()
+    return upcoming 
