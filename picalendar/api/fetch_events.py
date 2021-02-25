@@ -50,9 +50,12 @@ def get_events(number: int) -> list:
     upcoming = []
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
+        end = event['end'].get('dateTime', event['end'].get('date'))
+
         upcoming.append({
-                "start": start,
-                "summary": event["summary"]
+                'start': start,
+                'end': end,
+                'summary': event['summary']
             })
 
     if len(upcoming) == 0:
