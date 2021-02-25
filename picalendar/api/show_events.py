@@ -8,6 +8,9 @@ from picalendar.api.fetch_events import main as get_events
 
 @click.command('show')
 def show():
+    """
+    Retrieve and display upcoming events on a LCD
+    """
     display = drivers.Lcd()
     events = get_events()
     try:
