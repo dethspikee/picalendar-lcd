@@ -1,4 +1,4 @@
-# picalendar
+### picalendar
 ![GIF demo](demo/demo.gif)
 ```
 lcd i2c code (found in 'drivers' package) written by Raspberry Pi Guy:
