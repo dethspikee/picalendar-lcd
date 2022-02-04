@@ -40,11 +40,11 @@ def get_events(number: int) -> list:
     service = build('calendar', 'v3', credentials=creds)
 
     # Call the Calendar API
-    now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
     print(f'Getting the upcoming {number} events')
     events_result = service.events().list(calendarId='primary', timeMin=now,
-                                        maxResults=number, singleEvents=True,
-                                        orderBy='startTime').execute()
+                                          maxResults=number, singleEvents=True,
+                                          orderBy='startTime').execute()
     events = events_result.get('items', [])
 
     upcoming = []
@@ -53,12 +53,12 @@ def get_events(number: int) -> list:
         end = event['end'].get('dateTime', event['end'].get('date'))
 
         upcoming.append({
-                'start': start,
-                'end': end,
-                'summary': event['summary']
-            })
+            'start': start,
+            'end': end,
+            'summary': event['summary']
+        })
 
     if len(upcoming) == 0:
         print('No upcoming events...')
 
-    return upcoming 
+    return upcoming
